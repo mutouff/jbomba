@@ -1,29 +1,40 @@
 <!DOCTYPE html> 
 <html>
   <head> 
-    <title>jQuery Mobile Page Structure Test</title>
+    <meta charset="utf-8" />
+    <title>La Casa de la Bomba</title>
     <meta name=viewport content="user-scalable=no,width=device-width" />
-    <link rel="stylesheet" href="jquery.mobile-1.1.1/jquery.mobile-1.1.1.css" />
-    <script src="jquery-1.7.2.js"></script>
-    <script src="jquery.mobile-1.1.1/jquery.mobile-1.1.1.js"></script> 
+    <link rel="stylesheet" href="jquery.mobile.css" />
+    <script src="jquery.js"></script>
+    <script src="jquery.mobile.js"></script> 
   </head>
   <body>
 
     <div data-role="page" id="home">
+
       <div data-role="header"> 
-        <h1>Home page</h1>
+        <h1>ariquitaun</h1>
       </div>
 
       <div data-role="content"> 
-        <p>Hello Mobile World!, this is El Royo site</p>
-        <a href="about.html"> Goto About </a>
-        <br />
-        <a href="contact.html"> Contact us </a>
+        <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
+          <li><a href="#news" data-transition="slide">News</a></li>
+          <li><a href="#events" data-transition="slide">Events</a></li>
+          <li><a href="where_am_i.html" data-transition="slide">Where am I?</a></li>
+          <li><a href="#trains" data-transition="slide">Trains</a></li>
+        </ul>
       </div>
 
+
       <div data-role="footer"> 
-        <h4>I'm the footer</h4>
+        <div data-role="navbar" data-iconpos="top">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
       </div> 
+
     </div>
 
   </body> 

@@ -1,0 +1,80 @@
+<!DOCTYPE html> 
+<html>
+  <head> 
+    <meta charset="utf-8" />
+    <title>La Casa de la Bomba</title>
+    <meta name=viewport content="user-scalable=no,width=device-width" />
+
+    <link rel="stylesheet" href="jquery.mobile.css" />
+    <script src="jquery.js"></script>
+    <script src="jquery.mobile.js"></script> 
+
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $('#findme').click(function() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(success, error);
+                } else {
+                    error('Geolocation not supported');
+                }
+            });
+        });  
+
+
+        function success(position) {
+          var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          var myOptions = {
+            zoom: 15,
+            center: latlng,
+            mapTypeControl: false,
+            navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          var mapcanvas = $('#mapcanvas');
+          var map = new google.maps.Map(mapcanvas[0], myOptions);
+          var marker = new google.maps.Marker({
+              position: latlng, 
+              map: map, 
+              title:"I am here!"
+          });
+        }
+        
+
+        function error(msg) {
+          var errMsg = typeof msg == 'string' ? msg : "Geolocation failed";
+          $('#msg').html(errMsg);
+        }
+    </script>
+
+  </head>
+  <body>
+
+    <div data-role="page" id="where_am_i" data-add-back-btn="true">
+
+      <div data-role="header"> 
+        <h1>ariquitaun</h1>
+      </div>
+
+      <div data-role="content">
+        <input id="findme" type="button" value="Find Me" />
+        <div id="msg"></div>
+        <div id="mapcanvas" style="height: 400px; width: 560px;"></div>
+      </div>
+
+      <div data-role="footer"> 
+        <div data-role="navbar" data-iconpos="top">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+      </div> 
+
+    </div>
+
+  </body> 
+</html>
