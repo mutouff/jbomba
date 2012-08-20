@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta charset="utf-8" />
+    <title>La Casa de la Bomba</title>
+    <meta name=viewport content="user-scalable=no,width=device-width" />
+
+    <link rel="stylesheet" href="jquery.mobile.css" />
+    <script src="jquery.js"></script>
+    <script src="jquery.mobile.js"></script> 
+
+
+  </head>
+  <body>
+
+    <div data-role="page" id="loc1" data-add-back-btn="true">
+
+      <div data-role="header">
+        <h1>ariquitaun</h1>
+      </div>
+
+      <div data-role="content">
+        <p id="demo">Click the button to get your coordinates:</p>
+        <button onclick="getLocation()">Try It</button>
+
+<script>
+var x=document.getElementById("demo");
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition,showError);
+    }
+  else{x.innerHTML="Geolocation is not supported by this browser.";}
+  }
+function showPosition(position)
+  {
+  x.innerHTML="Latitude: " + position.coords.latitude + 
+  "<br />Longitude: " + position.coords.longitude;	
+  }
+function showError(error)
+  {
+  switch(error.code) 
+    {
+    case error.PERMISSION_DENIED:
+      x.innerHTML="User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML="Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML="The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML="An unknown error occurred."
+      break;
+    }
+  }
+</script>
+
+      </div>
+
+      <div data-role="footer">
+        <div data-role="navbar" data-iconpos="top">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
